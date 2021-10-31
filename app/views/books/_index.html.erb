@@ -22,6 +22,24 @@
            </td>
           <!--いいね機能の追加-------------------------------->
           <td><%= link_to "#{book.book_comments.count}コメント",book_path(book.id) %></td>
+        
+          <!--星の評価はじまり-->
+          <td>
+          <div id="rate_<%= book.id %>"></div>
+          <script>
+          $('#rate_<%= book.id %>').raty({
+            size: 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= book.rate %>,
+          });
+          </script>
+				  </td>
+          <!--星の評価おわり-->
+          
       </tr>
     <% end %>
   </tbody>
