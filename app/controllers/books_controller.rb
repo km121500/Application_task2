@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @books = Book.all
+    @books = Book.all.order(params[:sort])
     @book = Book.new
   end
 
